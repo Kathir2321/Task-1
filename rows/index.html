@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Rows</title>
+   
+</head>
+<body>
+    <div id="container">
+        <div class="row">
+            <input type="text" class="input-field" placeholder="Input 1">
+            <input type="text" class="input-field" placeholder="Input 2">
+            <h1 class="icon" onclick="addRow(this)">+</h1>
+        </div>
+    </div>
+
+    <script>
+        function addRow(icon) {
+            const container = document.getElementById('container');
+            const newRow = document.createElement('div');
+            newRow.classList.add('row');
+
+            const input1 = document.createElement('input');
+            input1.type = 'text';
+            input1.classList.add('input-field');
+            input1.placeholder = 'Input 1';
+
+            const input2 = document.createElement('input');
+            input2.type = 'text';
+            input2.classList.add('input-field');
+            input2.placeholder = 'Input 2';
+
+            const plusIcon = document.createElement('span');
+            plusIcon.classList.add('icon');
+            plusIcon.innerText = '+';
+            plusIcon.onclick = function() {
+                addRow(plusIcon);
+            };
+
+            const deleteIcon = document.createElement('span');
+            deleteIcon.classList.add('icon');
+            deleteIcon.innerText = '-';
+            deleteIcon.onclick = function() {
+                container.removeChild(newRow);
+            };
+
+            newRow.appendChild(input1);
+            newRow.appendChild(input2);
+            newRow.appendChild(plusIcon);
+            newRow.appendChild(deleteIcon);
+
+            container.appendChild(newRow);
+            icon.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cars List</title>
+</head>
+<body>
+    <form id="carForm">
+        <label for="cars">Cars (comma separated):</label>
+        <input type="text" id="cars" name="cars" required>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="carList"></div>
+
+    <script>
+        function submitForm() {
+            var carInput = document.getElementById("cars").value.trim();
+            var carListDiv = document.getElementById("carList");
+            if (carInput === "") {
+                carListDiv.innerHTML = "Cars field should have a value.";
+            } else {
+                var carList = carInput.split(",");
+                var ol = document.createElement("ol");                
+                for (var i = 0; i < carList.length; i++) {
+                    var li = document.createElement("li");
+                    li.textContent = carList[i];
+                    ol.appendChild(li);
+                }
+                carListDiv.innerHTML = "";
+                carListDiv.appendChild(ol);
+            }
+        }
+    </script>
+</body>
+</html>
+

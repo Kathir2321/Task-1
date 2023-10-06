@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Increase and Decrease Buttons</title>
+</head>
+<body>
+    <h1>Counter: <span id="counter">0</span></h1>
+    <button id="increaseButton">Increase</button>
+    <button id="decreaseButton">Decrease</button>
+
+    <script>
+        const counterElement = document.getElementById("counter");
+        const increaseButton = document.getElementById("increaseButton");
+        const decreaseButton = document.getElementById("decreaseButton");
+
+        let counterValue = 0;
+
+        function updateCounter() {
+            counterElement.textContent = counterValue;
+        }
+        increaseButton.addEventListener("click", function() {
+            counterValue++;
+            updateCounter();
+        });
+        decreaseButton.addEventListener("click", function() {
+            counterValue--;
+            updateCounter();
+            
+        });
+    </script>
+</body>
+</html>
